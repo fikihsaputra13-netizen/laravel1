@@ -24,11 +24,11 @@
                         📊 Dashboard
                     </a>
                 @else
-                    <a href="{{ route('login') }}" class="px-6 py-2 rounded-lg border border-cyan-400 text-cyan-400 hover:bg-cyan-400/10 font-semibold transition">
+                    <a href="{{ route('login', [], false) }}" class="px-6 py-2 rounded-lg border border-cyan-400 text-cyan-400 hover:bg-cyan-400/10 font-semibold transition">
                         🔐 Login
                     </a>
                     @if (Route::has('register'))
-                        <a href="{{ route('register') }}" class="px-6 py-2 rounded-lg bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 font-semibold transition shadow-lg shadow-cyan-500/20">
+                        <a href="{{ route('register', [], false) }}" class="px-6 py-2 rounded-lg bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 font-semibold transition shadow-lg shadow-cyan-500/20">
                             ✏️ Register
                         </a>
                     @endif
@@ -57,10 +57,10 @@
                             Buka Dashboard →
                         </a>
                     @else
-                        <a href="{{ route('register') }}" class="px-8 py-3 rounded-lg bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 font-bold text-lg transition shadow-lg shadow-cyan-500/30 hover:shadow-lg hover:shadow-cyan-600/40">
+                        <a href="{{ route('register', [], false) }}" class="px-8 py-3 rounded-lg bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 font-bold text-lg transition shadow-lg shadow-cyan-500/30 hover:shadow-lg hover:shadow-cyan-600/40">
                             Mulai Sekarang →
                         </a>
-                        <a href="{{ route('login') }}" class="px-8 py-3 rounded-lg border-2 border-cyan-400 text-cyan-400 hover:bg-cyan-400/10 font-bold text-lg transition">
+                        <a href="{{ route('login', [], false) }}" class="px-8 py-3 rounded-lg border-2 border-cyan-400 text-cyan-400 hover:bg-cyan-400/10 font-bold text-lg transition">
                             Sudah Punya Akun?
                         </a>
                     @endauth
@@ -119,7 +119,7 @@
                         Ke Dashboard Saya →
                     </a>
                 @else
-                    <a href="{{ route('register') }}" class="inline-block px-8 py-4 rounded-lg bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 font-bold text-lg transition shadow-lg shadow-cyan-500/30 hover:shadow-lg hover:shadow-cyan-600/40">
+                    <a href="{{ route('register', [], false) }}" class="inline-block px-8 py-4 rounded-lg bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 font-bold text-lg transition shadow-lg shadow-cyan-500/30 hover:shadow-lg hover:shadow-cyan-600/40">
                         Daftar Gratis Sekarang →
                     </a>
                 @endauth

@@ -65,7 +65,7 @@
                     </div>
                 @endif
 
-                <form method="POST" action="{{ route('register') }}" class="space-y-6">
+                <form method="POST" action="{{ route('register', [], false) }}" class="space-y-6">
                     @csrf
                     <label class="block text-sm font-medium text-slate-300">
                         Nama Lengkap
@@ -100,7 +100,7 @@
                 <div class="mt-8 rounded-3xl border border-white/10 bg-slate-900/80 p-4 text-sm text-slate-400">
                     <p class="font-medium text-slate-100">Sudah punya akun?</p>
                     <p class="mt-2">Klik tombol di bawah untuk masuk kembali ke halaman login.</p>
-                    <a href="{{ route('login') }}" class="mt-4 inline-flex items-center justify-center rounded-3xl bg-slate-800/80 px-5 py-3 text-sm font-semibold text-cyan-300 transition hover:bg-slate-700/90">Masuk di sini</a>
+                    <a href="{{ route('login', [], false) }}" class="mt-4 inline-flex items-center justify-center rounded-3xl bg-slate-800/80 px-5 py-3 text-sm font-semibold text-cyan-300 transition hover:bg-slate-700/90">Masuk di sini</a>
                 </div>
             </div>
         </div>
