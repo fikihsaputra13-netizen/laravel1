@@ -66,7 +66,7 @@
                     </div>
                 @endif
 
-                <form method="POST" action="{{ route('login') }}" class="space-y-6">
+                <form method="POST" action="{{ route('login', [], false) }}" class="space-y-6">
                     @csrf
                     <label class="block text-sm font-medium text-slate-300">
                         Email
