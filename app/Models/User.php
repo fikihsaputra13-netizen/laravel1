@@ -10,6 +10,11 @@ use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
+    // Sementara: anggap user id 1 adalah admin
+    public function getIsAdminAttribute()
+    {
+        return $this->id === 1;
+    }
     /** @use HasFactory<UserFactory> */
     use HasFactory, Notifiable;
 

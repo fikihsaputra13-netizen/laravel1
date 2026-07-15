@@ -81,4 +81,17 @@ class LoanController extends Controller
 
         return redirect()->route('dashboard')->with('status', 'Denda berhasil dilunasi.');
     }
+
+    // Fitur baru: setFine
+    public function setFine(Request $request, Loan $loan)
+    {
+        $request->validate([
+            'fine' => ['required', 'numeric', 'min:0']
+        ]);
+
+        // Hanya admin atau pemilik loan yang boleh update
+        $this->authorize('update', $loan);
+        $loan->update(['fine' => $request->fine]);
+        return redirect()->route('dashboard')->with('status', 'Denda berhasil diubah.');
+    }
 }

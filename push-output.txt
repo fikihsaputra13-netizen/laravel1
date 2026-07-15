@@ -1,0 +1,9 @@
+﻿git : Pushing to https://github.com/fikihsaputra13-netizen/laravel1.git
+At line:1 char:1
++ git push -u origin main --verbose 2>&1 | Out-File -FilePath push-outp ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Pushing to http...en/laravel1.git 
+   :String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+fatal: User cancelled dialog.

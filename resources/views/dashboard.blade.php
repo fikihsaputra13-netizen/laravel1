@@ -38,6 +38,10 @@
                        class="inline-flex items-center justify-center gap-2 rounded-3xl bg-gradient-to-r from-cyan-400 via-blue-500 to-violet-500 px-6 py-3 text-sm font-semibold text-slate-950 transition hover:scale-[1.01] shadow-2xl shadow-cyan-500/20">
                         👥 Anggota
                     </a>
+                    <a href="{{ route('chat.index') }}"
+                       class="inline-flex items-center justify-center gap-2 rounded-3xl bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 px-6 py-3 text-sm font-semibold text-slate-950 transition hover:scale-[1.01] shadow-2xl shadow-purple-500/20">
+                        💬 Chat Bot
+                    </a>
                     <form method="POST" action="{{ route('logout') }}" class="inline">
                         @csrf
                         <button type="submit"
@@ -356,12 +360,21 @@
                                 <div class="font-semibold text-white mb-1">{{ $fineLoan->book->title }}</div>
                                 <div class="text-sm text-slate-300 mb-1">Anggota: {{ $fineLoan->user->name }}</div>
                                 <div class="text-sm text-slate-300 mb-2">Denda: Rp {{ number_format($fineLoan->fine, 0, ',', '.') }}</div>
-                                <form method="POST" action="{{ route('loans.payFine', $fineLoan) }}">
-                                    @csrf
-                                    <button type="submit" class="w-full inline-flex items-center justify-center gap-2 rounded-3xl bg-gradient-to-r from-rose-500 to-pink-500 px-4 py-3 text-sm font-semibold text-white transition hover:from-rose-600 hover:to-pink-600 shadow-lg shadow-rose-500/20">
-                                        💳 Bayar Denda
-                                    </button>
-                                </form>
+                                <div class="flex flex-col md:flex-row gap-2">
+                                    <form method="POST" action="{{ route('loans.payFine', $fineLoan) }}" class="flex-1">
+                                        @csrf
+                                        <button type="submit" class="w-full inline-flex items-center justify-center gap-2 rounded-3xl bg-gradient-to-r from-rose-500 to-pink-500 px-4 py-3 text-sm font-semibold text-white transition hover:from-rose-600 hover:to-pink-600 shadow-lg shadow-rose-500/20">
+                                            💳 Bayar Denda
+                                        </button>
+                                    </form>
+                                    <form method="POST" action="{{ route('loans.setFine', $fineLoan) }}" class="flex-1 flex gap-2 items-center">
+                                        @csrf
+                                        <input type="number" name="fine" min="0" value="{{ $fineLoan->fine }}" class="rounded-xl px-2 py-1 w-24 text-sm text-slate-900" required />
+                                        <button type="submit" class="inline-flex items-center gap-1 rounded-xl bg-cyan-600 px-3 py-2 text-xs font-semibold text-white hover:bg-cyan-700 transition">
+                                            ✏️ Ubah Denda
+                                        </button>
+                                    </form>
+                                </div>
                             </div>
                         @empty
                             <div class="text-center py-8 text-slate-500">
