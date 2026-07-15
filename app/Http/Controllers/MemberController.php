@@ -8,6 +8,14 @@ use Illuminate\Support\Facades\Hash;
 
 class MemberController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(function ($request, $next) {
+            abort_unless(auth()->user()?->is_admin, 403);
+            return $next($request);
+        });
+    }
+
     public function index()
     {
         $members = User::all();

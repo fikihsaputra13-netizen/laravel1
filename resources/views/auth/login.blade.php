@@ -95,10 +95,6 @@
                     </button>
                 </form>
 
-                <div class="mt-8 rounded-3xl border border-white/10 bg-slate-900/80 p-4 text-sm text-slate-400">
-                    <p class="font-medium text-slate-100">Akun Demo</p>
-                    <p class="mt-2">fikihsaputra12@gmail.com / Saputra12*! — Coba langsung tanpa instalasi tambahan.</p>
-                </div>
             </div>
         </div>
     </div>

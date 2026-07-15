@@ -36,6 +36,8 @@ class LoanController extends Controller
 
     public function returnBook(Request $request, Book $book)
     {
+        abort_unless(auth()->user()->is_admin, 403);
+
         $data = $request->validate([
             'return_date' => ['required', 'date'],
         ]);
@@ -73,6 +75,8 @@ class LoanController extends Controller
 
     public function payFine(Loan $loan)
     {
+        abort_unless(auth()->user()->is_admin, 403);
+
         if ($loan->status !== 'returned' || $loan->fine <= 0) {
             return redirect()->route('dashboard')->withErrors('Denda tidak tersedia untuk dilunasi.');
         }
@@ -85,6 +89,7 @@ class LoanController extends Controller
     // Fitur baru: setFine
     public function setFine(Request $request, Loan $loan)
     {
+        abort_unless(auth()->user()->is_admin, 403);
         $request->validate([
             'fine' => ['required', 'numeric', 'min:0']
         ]);

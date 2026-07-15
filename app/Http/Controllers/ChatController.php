@@ -7,6 +7,14 @@ use Illuminate\Http\Request;
 
 class ChatController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(function ($request, $next) {
+            abort_unless(auth()->user()?->is_admin, 403);
+            return $next($request);
+        });
+    }
+
     public function index()
     {
         $messages = ChatMessage::where('user_id', auth()->id())

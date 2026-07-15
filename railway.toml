@@ -2,6 +2,6 @@
 builder = "nixpacks"
 
 [deploy]
-startCommand = "php artisan migrate --force && php artisan config:cache && php artisan route:cache && php artisan serve --host 0.0.0.0 --port $PORT"
+startCommand = "APP_ENV=production APP_DEBUG=false APP_URL=https://${RAILWAY_PUBLIC_DOMAIN:-localhost} php artisan key:generate --force && APP_ENV=production APP_DEBUG=false APP_URL=https://${RAILWAY_PUBLIC_DOMAIN:-localhost} php artisan migrate --force && APP_ENV=production APP_DEBUG=false APP_URL=https://${RAILWAY_PUBLIC_DOMAIN:-localhost} php artisan config:cache && APP_ENV=production APP_DEBUG=false APP_URL=https://${RAILWAY_PUBLIC_DOMAIN:-localhost} php artisan route:cache && php artisan serve --host 0.0.0.0 --port $PORT"
 restartPolicyType = "on_failure"
 restartPolicyMaxRetries = 3
