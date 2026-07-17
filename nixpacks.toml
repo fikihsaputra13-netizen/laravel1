@@ -1,2 +1,9 @@
 [variables]
 NIXPACKS_NODE_VERSION = "22"
+COMPOSER_ALLOW_SUPERUSER = "1"
+COMPOSER_MEMORY_LIMIT = "-1"
+
+[phases.install]
+commands = [
+	"composer install --no-dev --optimize-autoloader --no-interaction"
+]
