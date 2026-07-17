@@ -30,7 +30,7 @@
                         📚 Dashboard Perpustakaan
                     </h1>
                     <p class="mt-4 text-slate-300 text-lg">
-                        Halo, <span class="font-semibold text-white">{{ auth()->user()->name }}</span>. {{ $isAdmin ? 'Kelola buku, anggota, dan pinjaman dalam satu platform modern.' : 'Lihat buku yang tersedia dan ajukan pinjaman. Semua pengembalian dan denda akan dikelola oleh admin.' }}
+                        Halo, <span class="font-semibold text-white">{{ optional(auth()->user())->name ?? 'Pengguna' }}</span>. {{ $isAdmin ? 'Kelola buku, anggota, dan pinjaman dalam satu platform modern.' : 'Lihat buku yang tersedia dan ajukan pinjaman. Semua pengembalian dan denda akan dikelola oleh admin.' }}
                     </p>
                 </div>
                 <div class="flex flex-col gap-3 sm:flex-row">
@@ -500,7 +500,7 @@
     <script>
         function showBorrowForm(bookId, bookTitle) {
             document.getElementById('borrowBookTitle').textContent = bookTitle;
-            document.getElementById('borrowForm').action = `/books/${bookId}/borrow`;
+            document.getElementById('borrowForm').action = `{{ url('/') }}/books/${bookId}/borrow`;
             document.getElementById('borrowModal').classList.remove('hidden');
             document.getElementById('borrowModal').classList.add('flex');
         }
@@ -512,7 +512,7 @@
 
         function showReturnForm(bookId, bookTitle) {
             document.getElementById('returnBookTitle').textContent = bookTitle;
-            document.getElementById('returnForm').action = `/books/${bookId}/return`;
+            document.getElementById('returnForm').action = `{{ url('/') }}/books/${bookId}/return`;
             document.getElementById('returnModal').classList.remove('hidden');
             document.getElementById('returnModal').classList.add('flex');
         }

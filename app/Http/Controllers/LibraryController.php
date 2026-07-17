@@ -12,14 +12,17 @@ class LibraryController extends Controller
     {
         $search = $request->get('search');
         $category = $request->get('category');
-        $isAdmin = auth()->user()->is_admin;
+        $isAdmin = auth()->user()?->is_admin;
 
         $booksQuery = Book::query();
 
         if ($search) {
-            $booksQuery->where('title', 'like', '%' . $search . '%')
-                      ->orWhere('author', 'like', '%' . $search . '%');
+            $booksQuery->where(function ($q) use ($search) {
+                $q->where('title', 'like', '%' . $search . '%')
+                  ->orWhere('author', 'like', '%' . $search . '%');
+            });
         }
+
 
         if ($category) {
             $booksQuery->where('category', $category);

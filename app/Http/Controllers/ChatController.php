@@ -10,7 +10,8 @@ class ChatController extends Controller
     public function __construct()
     {
         $this->middleware(function ($request, $next) {
-            abort_unless(auth()->user()?->is_admin, 403);
+            // semua anggota boleh akses chat
+            abort_unless(auth()->check(), 403);
             return $next($request);
         });
     }
