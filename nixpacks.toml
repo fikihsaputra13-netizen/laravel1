@@ -7,3 +7,9 @@ COMPOSER_MEMORY_LIMIT = "-1"
 commands = [
 	"composer install --no-dev --optimize-autoloader --no-interaction --no-scripts"
 ]
+
+[phases.build]
+commands = [
+	"npm ci --include=dev || npm ci",
+	"npm run build"
+]
