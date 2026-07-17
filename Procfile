@@ -1,2 +1,2 @@
 web: php artisan serve --host=0.0.0.0 --port=${PORT:-8000}
-release: if [ ! -f .env ]; then cp .env.example .env; fi; perl -pi -e "s/^APP_ENV=.*/APP_ENV=production/; s/^APP_DEBUG=.*/APP_DEBUG=false/; s|^APP_URL=.*|APP_URL=https://${RAILWAY_PUBLIC_DOMAIN:-localhost}|" .env; php artisan key:generate --force; php artisan migrate --force; php artisan config:cache; php artisan route:cache
+release: if [ ! -f .env ]; then cp .env.example .env; fi; perl -pi -e "s/^APP_ENV=.*/APP_ENV=production/; s/^APP_DEBUG=.*/APP_DEBUG=false/; s|^APP_URL=.*|APP_URL=https://${RAILWAY_PUBLIC_DOMAIN:-localhost}|" .env; php artisan key:generate --force; php artisan migrate --force; php artisan view:clear; (php artisan storage:link || true); php artisan config:cache; php artisan route:cache
